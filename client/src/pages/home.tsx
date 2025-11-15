@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { WaterAnimation } from '@/components/WaterAnimation';
+import { useState, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
-import { HeroSection } from '@/components/HeroSection';
+import { VideoHero } from '@/components/VideoHero';
 import { ServicesSection } from '@/components/ServicesSection';
 import { PortfolioSection } from '@/components/PortfolioSection';
 import { TrustSection } from '@/components/TrustSection';
@@ -11,12 +10,11 @@ import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
   const [isContentVisible, setIsContentVisible] = useState(false);
-  const [isNavVisible, setIsNavVisible] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
 
-  const handleAnimationComplete = () => {
-    setIsContentVisible(true);
-    setTimeout(() => setIsNavVisible(true), 500);
-  };
+  useEffect(() => {
+    setTimeout(() => setIsContentVisible(true), 300);
+  }, []);
 
   const handleExploreClick = () => {
     const servicesSection = document.getElementById('services');
@@ -26,14 +24,12 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-screen">
-      <WaterAnimation onAnimationComplete={handleAnimationComplete} />
-      
+    <div className="relative min-h-screen bg-gray-900">
       <Navigation isVisible={isNavVisible} />
-      
+
       <div className="relative">
-        <HeroSection 
-          isContentVisible={isContentVisible} 
+        <VideoHero
+          isContentVisible={isContentVisible}
           onExploreClick={handleExploreClick}
         />
         <ServicesSection />
