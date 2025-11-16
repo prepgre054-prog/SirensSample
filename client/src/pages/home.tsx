@@ -24,7 +24,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gray-900">
+    <div className="relative min-h-screen bg-slate-950">
       <Navigation isVisible={isNavVisible} />
 
       <div className="relative">
